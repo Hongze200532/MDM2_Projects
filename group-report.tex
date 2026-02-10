@@ -1,0 +1,136 @@
+% MDM2 LaTeX template
+% 2020-11-16
+% C L Hall, using some existing material from S J Hogan and R E Wilson
+
+% README: Look at the preamble (the things before \begin{document}). Probably, the only things you will need to change are the bits in "Title, authors, date" immediately below.
+
+% Document class: Unless you are writing a dissertation, "article" is almost always the correct document class. 
+\documentclass[11pt,a4paper,twoside]{article}
+\usepackage[utf8]{inputenc} % Enables direct typing of special characters
+
+% Title, authors, date
+% NOTE: I like to create new commands for theTitle (which appears on the cover page), theShortTitle, and theAuthors that I can call later in the document; you don't need to do this.
+\newcommand{\theShortTitle}{Short title of the group project} 
+\newcommand{\theTitle}{{\large MDM2 Group Project 2, Group 10} \\ \theShortTitle}
+\newcommand{\theAuthors}{Alfie Rootham, Hongze Lin, Qusai Gazzaz, William Bolton, Zach Ball}
+\title{\theTitle}
+\author{\theAuthors}
+\date{\today}
+
+% Page style
+% NOTE: The geometry and fancyhdr packages are very adaptable. These are the defaults I would like you to use.
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=2.75cm,right=2.75cm,marginparwidth=2.25cm,includeheadfoot,twoside]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\headheight=18pt
+\footskip=18pt
+\fancyhf{}
+% NOTE: This sets things up so that there is a header with the short version of the title on the left, and the page number on the right
+\fancyhead[L]{\bfseries \theShortTitle}
+\fancyhead[R]{\bfseries \thepage}
+\renewcommand{\headrulewidth}{1pt} 
+
+% Bibliography style
+\usepackage{cite}                  % Useful for sorting and compressing citations
+\bibliographystyle{abbrv}
+
+% Line spacing
+\usepackage[skip=0.8\baselineskip,indent=0pt]{parskip} % If you have an old download of LaTeX this might cause problems.
+
+
+% AMS Packages for maths typesetting
+% NOTE: These are extremely useful!!! They are so useful, I am even leaving this in the barebones version.
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+% Importing graphics and defining the graphics path
+% NOTE: The second part of this means you can put graphics in a subfolder called Figures and LaTeX will find them.
+\usepackage{graphicx}
+\graphicspath{{./}{./Figures/}}
+
+% TikZ packages and useful libraries
+% NOTE: TikZ and pgfplots are great for drawing your own figures and plots in LaTeX (see TikZ/PGF and PGFplots manuals online for details)
+% I have removed the TikZ section from the barebones preamble
+
+% Miscellaneous packages
+% NOTE: Don't be afraid to include more packages (e.g. booktabs for pretty tables) or remove packages you don't use.
+% I have removed all of the packages excelt Babel from the barebones preamble.
+\usepackage[english]{babel}       % Hyphenation etc. for English words
+
+% User defined commands
+% NOTE: The fact that you can define your own commands can be very useful. I have removed these from the barebones version
+
+% Hyperlinking within text.
+% NOTE: This must always be the last part of the preamble (before the doucment)
+\usepackage{hyperref}
+\hypersetup{
+	unicode=true,                 % non-Latin characters in Acrobat bookmarks
+	pdftoolbar=true,              % show Acrobat toolbar?
+	pdfmenubar=true,              % show Acrobat menu?
+	pdffitwindow=true,            % page fit to window when opened
+	pdftitle={\theShortTitle},    % title of pdf document
+	pdfauthor={\theAuthors},      % author of pdf document
+	pdfsubject={},                % subject of the document
+	pdfnewwindow=true,            % links in new window
+	pdfkeywords={},               % list of keywords
+	colorlinks=true,              % false: boxed links; true: colored links
+	linkcolor=black,              % color of internal links
+	citecolor=black,              % color of links to bibliography
+	filecolor=black,              % color of file links
+	urlcolor=blue                 % color of external links
+}
+
+
+
+\begin{document}
+
+% Create the title and make sure there isn't a page number at the bottom of the page
+\maketitle
+\thispagestyle{empty}	
+
+\begin{abstract}
+	
+	Brief description of a thing.
+	
+\end{abstract}
+
+
+% Reset page numbering so document starts on page 1
+\newpage
+\setcounter{page}{1}
+
+\section{Introduction}
+
+We are going to do a thing because reasons.
+
+\section{Methods}
+
+This is how we will do the thing.
+
+\section{Results}
+
+This is what happened when did the thing.
+
+\section{Discussion}
+
+Here are some thoughts on what doing the thing means and about other things we want to do now.
+
+\section{Conclusion}
+
+We did a thing that is very meaningful because reasons.
+
+
+\newpage
+\bibliography{example-bib}
+
+
+\newpage
+\appendix
+
+\section{Here is an appendix}
+\label{sec:Appendix}
+
+Here are some extra details about things.
+
+\end{document}
